@@ -214,5 +214,58 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "introduction",
+    "fields": [
+      {
+        "component": "text-input",
+        "name": "eyebrow",
+        "label": "Eyebrow",
+        "valueType": "string"
+      },
+      {
+        "component": "text-input",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "text-input",
+        "name": "primaryCtaText",
+        "label": "Primary CTA Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text-input",
+        "name": "primaryCtaUrl",
+        "label": "Primary CTA URL",
+        "valueType": "string"
+      },
+      {
+        "component": "text-input",
+        "name": "secondaryCtaText",
+        "label": "Secondary CTA Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text-input",
+        "name": "secondaryCtaUrl",
+        "label": "Secondary CTA URL",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image",
+        "valueType": "string"
+      }
+    ]
   }
 ]

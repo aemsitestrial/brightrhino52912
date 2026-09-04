@@ -72,9 +72,5 @@
     }
   ],
   "filters": [
-    {
-      "id": "introduction",
-      "components": ["introduction"]
-    }
-  ]
+  ] 
 }
