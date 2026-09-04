@@ -219,13 +219,13 @@
     "id": "introduction",
     "fields": [
       {
-        "component": "text-input",
+        "component": "text",
         "name": "eyebrow",
         "label": "Eyebrow",
         "valueType": "string"
       },
       {
-        "component": "text-input",
+        "component": "text",
         "name": "title",
         "label": "Title",
         "valueType": "string"
@@ -237,27 +237,27 @@
         "valueType": "string"
       },
       {
-        "component": "text-input",
+        "component": "text",
         "name": "primaryCtaText",
         "label": "Primary CTA Text",
         "valueType": "string"
       },
       {
-        "component": "text-input",
-        "name": "primaryCtaUrl",
-        "label": "Primary CTA URL",
+        "component": "text",
+        "name": "primaryCta",
+        "label": "Primary CTA",
         "valueType": "string"
       },
       {
-        "component": "text-input",
+        "component": "text",
         "name": "secondaryCtaText",
         "label": "Secondary CTA Text",
         "valueType": "string"
       },
       {
-        "component": "text-input",
-        "name": "secondaryCtaUrl",
-        "label": "Secondary CTA URL",
+        "component": "text",
+        "name": "secondaryCta",
+        "label": "Secondary CTA",
         "valueType": "string"
       },
       {
