@@ -1,37 +1,155 @@
+/* Block: hero -- full-bleed background image with overlaid content.
+ * Values extracted from source computed styles (wknd-adventures.com). */
+
+/* Full-bleed: escape the 1200px section wrapper constraint. */
 .hero-container .hero-wrapper {
   max-width: unset;
   padding: 0;
 }
 
-.hero {
+/* --- Block: layered flex container --- */
+.hero.block {
   position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
+  display: flex;
+  align-items: center;
+  min-height: 480px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
-.hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--background-color);
-}
-
-.hero picture {
+/* --- Background layer (row 1: image cell) --- */
+.hero.block > div:first-child {
   position: absolute;
-  z-index: -1;
   inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
+  z-index: 0;
+  margin: 0;
+  padding: 0;
 }
 
-.hero img {
-  object-fit: cover;
+.hero.block > div:first-child > div,
+.hero.block > div:first-child p {
+  height: 100%;
+  margin: 0;
+}
+
+.hero.block > div:first-child picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.hero.block > div:first-child img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+/* Gradient overlay: darker at the bottom, lighter at the top. */
+.hero.block > div:first-child::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    0deg,
+    rgb(0 0 0 / 75%) 0%,
+    rgb(0 0 0 / 45%) 40%,
+    rgb(0 0 0 / 25%) 100%
+  );
+}
+
+/* --- Content layer (row 2: text cell) --- */
+/* stylelint-disable-next-line no-descending-specificity */
+.hero.block > div:last-child {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+.hero.block > div:last-child > div {
+  max-width: 832px;
+}
+
+/* Eyebrow pill badge (first paragraph). */
+.hero.block > div:last-child p:first-of-type {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  padding: 5px 8px 3px;
+  border-radius: 9999px;
+  background-color: var(--accent-color);
+  color: #fff;
+  font-family: var(--heading-font-family);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 0.05em;
+}
+
+/* Headline. */
+.hero.block h1 {
+  margin: 16px 0 24px;
+  max-width: 100%;
+  color: #fff;
+  font-size: var(--heading-font-size-xxl);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* Lead paragraph (immediately after the headline). */
+/* stylelint-disable-next-line no-descending-specificity */
+.hero.block h1 + p {
+  max-width: 608px;
+  margin: 0 0 24px;
+  color: rgb(255 255 255 / 85%);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* --- CTA buttons: lay the two button-containers out in a row --- */
+.hero.block .button-container {
+  display: inline-flex;
+  margin: 24px 16px 0 0;
+}
+
+.hero.block .button-container:last-child {
+  margin-right: 0;
+}
+
+.hero.block .button-container a.button:any-link {
+  margin: 0;
+  letter-spacing: 0.07em;
+}
+
+/* Second CTA renders as a light outline button over the image. */
+.hero.block .button-container + .button-container a.button:any-link {
+  background-color: transparent;
+  border-color: rgb(255 255 255 / 50%);
+  color: #fff;
+}
+
+.hero.block .button-container + .button-container a.button:hover,
+.hero.block .button-container + .button-container a.button:focus {
+  background-color: #fff;
+  border-color: #fff;
+  color: var(--dark-color);
 }
 
 @media (width >= 900px) {
-  .hero {
-    padding: 40px 32px;
+  .hero.block {
+    min-height: 585px;
+  }
+
+  .hero.block > div:last-child {
+    padding: 64px 24px;
   }
 }

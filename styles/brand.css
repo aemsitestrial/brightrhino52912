@@ -1,0 +1,27 @@
+:root {
+  /* Fonts */
+  --heading-font-family: "Syncopate", sans-serif;
+  --body-font-family: "Instrument Sans", sans-serif;
+
+  /* Colors */
+  --background-color: #fff;
+  --text-color: #0f1a14;
+  --link-color: #0f1a14;
+  --link-hover-color: #e8651a;
+  --accent-color: #e8651a;
+  --light-color: #f0ece4;
+  --dark-color: #0f1a14;
+
+  /* Spacing */
+  --section-padding: 80px;
+  --content-max-width: 1200px;
+  --nav-height: 34px;
+
+  /* Heading sizes (desktop) */
+  --heading-size-xxl: 56px;
+  --heading-size-xl: 40px;
+  --heading-size-l: 24px;
+  --heading-size-m: 20px;
+  --heading-size-s: 18px;
+  --heading-size-xs: 16px;
+}
