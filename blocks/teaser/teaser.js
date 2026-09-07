@@ -3,25 +3,46 @@
  *
  * A teaser (featured article) previews content with an image beside a content
  * column: eyebrow tag, title, short description, and a single call-to-action
- * link. The authored rows map, in order, to: image, eyebrow, title,
- * description, link.
+ * link.
+ *
+ * Universal Editor collapses suffix fields (imageAlt into the image cell,
+ * linkText into the link cell), so the authored block has five rows, in order:
+ *
+ * | Teaser      |
+ * | <image>     |
+ * | Eyebrow     |
+ * | Title       |
+ * | Description |
+ * | <cta link>  |
  *
  * @param {HTMLElement} block The block element.
  */
 export default function decorate(block) {
   block.setAttribute('role', 'region');
 
-  const rows = [...block.children];
-  const [imageRow, eyebrowRow, titleRow, descriptionRow, linkRow] = rows;
+  const [imageRow, eyebrowRow, titleRow, descriptionRow, linkRow] = [...block.children];
 
   block.textContent = '';
 
-  // Media
-  const picture = imageRow?.querySelector('picture');
-  if (picture) {
+  // Media — the image cell contains a <picture> (or a bare <img>); the alt
+  // text authored via imageAlt is already applied to the <img> by the editor.
+  let image = imageRow?.querySelector('picture') || imageRow?.querySelector('img');
+  if (!image) {
+    // An AEM asset reference can render as a link to the delivery URL rather
+    // than a ready-made <picture>; build an <img> from it in that case.
+    const assetLink = imageRow?.querySelector('a');
+    if (assetLink) {
+      const img = document.createElement('img');
+      img.src = assetLink.href;
+      img.alt = assetLink.title || '';
+      img.loading = 'lazy';
+      image = img;
+    }
+  }
+  if (image) {
     const media = document.createElement('div');
     media.className = 'teaser-image';
-    media.append(picture);
+    media.append(image);
     block.append(media);
   }
 
@@ -52,16 +73,15 @@ export default function decorate(block) {
     content.append(description);
   }
 
+  // CTA — the collapsed link cell renders as an anchor; restyle it and wrap it
+  // in a row so it can be laid out as a divider-topped action bar.
   const link = linkRow?.querySelector('a');
   if (link) {
-    const cta = document.createElement('a');
-    cta.className = 'button teaser-cta';
-    cta.href = link.href;
-    cta.textContent = link.textContent.trim();
+    link.className = 'button teaser-cta';
 
     const ctaRow = document.createElement('div');
     ctaRow.className = 'teaser-cta-row';
-    ctaRow.append(cta);
+    ctaRow.append(link);
     content.append(ctaRow);
   }
 
