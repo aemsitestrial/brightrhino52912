@@ -25,7 +25,19 @@ export default function decorate(block) {
 
   // Media — the image cell contains a <picture> (or a bare <img>); the alt
   // text authored via imageAlt is already applied to the <img> by the editor.
-  const image = imageRow?.querySelector('picture') || imageRow?.querySelector('img');
+  let image = imageRow?.querySelector('picture') || imageRow?.querySelector('img');
+  if (!image) {
+    // An AEM asset reference can render as a link to the delivery URL rather
+    // than a ready-made <picture>; build an <img> from it in that case.
+    const assetLink = imageRow?.querySelector('a');
+    if (assetLink) {
+      const img = document.createElement('img');
+      img.src = assetLink.href;
+      img.alt = assetLink.title || '';
+      img.loading = 'lazy';
+      image = img;
+    }
+  }
   if (image) {
     const media = document.createElement('div');
     media.className = 'teaser-image';
