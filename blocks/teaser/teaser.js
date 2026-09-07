@@ -2,37 +2,34 @@
  * Decorates the teaser block for Adobe Experience Manager Edge Delivery Services.
  *
  * A teaser previews content with an image, optional eyebrow, title, short
- * description, and a call-to-action link. Authored rows map, in order, to:
- * image, alt text, eyebrow, title, description, CTA link, CTA text.
+ * description, and a call-to-action link.
+ *
+ * Universal Editor collapses suffix fields (imageAlt into the image cell,
+ * linkText into the link cell), so the authored block has five rows, in order:
+ *
+ * | Teaser      |
+ * | <image>     |
+ * | Eyebrow     |
+ * | Title       |
+ * | Description |
+ * | <cta link>  |
  *
  * @param {HTMLElement} block The block element.
  */
 export default function decorate(block) {
   block.setAttribute('role', 'region');
 
-  const rows = [...block.children];
-  const [
-    imageRow,
-    altRow,
-    eyebrowRow,
-    titleRow,
-    descriptionRow,
-    ctaLinkRow,
-    ctaTextRow,
-  ] = rows;
+  const [imageRow, eyebrowRow, titleRow, descriptionRow, linkRow] = [...block.children];
 
   block.textContent = '';
 
-  // Media
-  const picture = imageRow?.querySelector('picture');
-  if (picture) {
-    const img = picture.querySelector('img');
-    const alt = altRow?.textContent.trim();
-    if (img && alt) img.alt = alt;
-
+  // Media — the image cell contains a <picture> (or a bare <img>); the alt
+  // text authored via imageAlt is already applied to the <img> by the editor.
+  const image = imageRow?.querySelector('picture') || imageRow?.querySelector('img');
+  if (image) {
     const media = document.createElement('div');
     media.className = 'teaser-image';
-    media.append(picture);
+    media.append(image);
     block.append(media);
   }
 
@@ -62,14 +59,11 @@ export default function decorate(block) {
     content.append(description);
   }
 
-  const ctaText = ctaTextRow?.textContent.trim();
-  const ctaLink = ctaLinkRow?.querySelector('a')?.href
-    || ctaLinkRow?.textContent.trim();
-  if (ctaText && ctaLink) {
-    const cta = document.createElement('a');
+  // CTA — the collapsed link cell already renders as an anchor whose text is
+  // the authored linkText; just restyle it.
+  const cta = linkRow?.querySelector('a');
+  if (cta) {
     cta.className = 'teaser-cta';
-    cta.href = ctaLink;
-    cta.textContent = ctaText;
     content.append(cta);
   }
 
