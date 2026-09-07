@@ -21,6 +21,12 @@
     ]
   },
   {
+    "id": "accordion-faq",
+    "components": [
+      "accordion-faq-item"
+    ]
+  },
+  {
     "id": "cards",
     "components": [
       "card"
@@ -39,6 +45,12 @@
       "image",
       "button",
       "title"
+    ]
+  },
+  {
+    "id": "tabs-activity",
+    "components": [
+      "tabs-activity-item"
     ]
   }
 ]

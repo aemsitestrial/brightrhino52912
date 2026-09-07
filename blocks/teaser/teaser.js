@@ -1,8 +1,9 @@
 /**
  * Decorates the teaser block for Adobe Experience Manager Edge Delivery Services.
  *
- * A teaser previews content with an image, optional eyebrow, title, short
- * description, and a call-to-action link.
+ * A teaser (featured article) previews content with an image beside a content
+ * column: eyebrow tag, title, short description, and a single call-to-action
+ * link.
  *
  * Universal Editor collapses suffix fields (imageAlt into the image cell,
  * linkText into the link cell), so the authored block has five rows, in order:
@@ -59,9 +60,10 @@ export default function decorate(block) {
 
   const title = titleRow?.textContent.trim();
   if (title) {
-    const heading = document.createElement('h3');
-    heading.className = 'teaser-title';
-    heading.textContent = title;
+    const heading = titleRow.querySelector('h1, h2, h3, h4, h5, h6')
+      || document.createElement('h2');
+    heading.classList.add('teaser-title');
+    if (!heading.textContent.trim()) heading.textContent = title;
     content.append(heading);
   }
 
@@ -71,12 +73,16 @@ export default function decorate(block) {
     content.append(description);
   }
 
-  // CTA — the collapsed link cell already renders as an anchor whose text is
-  // the authored linkText; just restyle it.
-  const cta = linkRow?.querySelector('a');
-  if (cta) {
-    cta.className = 'teaser-cta';
-    content.append(cta);
+  // CTA — the collapsed link cell renders as an anchor; restyle it and wrap it
+  // in a row so it can be laid out as a divider-topped action bar.
+  const link = linkRow?.querySelector('a');
+  if (link) {
+    link.className = 'button teaser-cta';
+
+    const ctaRow = document.createElement('div');
+    ctaRow.className = 'teaser-cta-row';
+    ctaRow.append(link);
+    content.append(ctaRow);
   }
 
   block.append(content);

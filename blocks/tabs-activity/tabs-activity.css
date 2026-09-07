@@ -1,0 +1,165 @@
+/* Block: tabs-activity -- values extracted from source computed styles */
+
+/* Tab menu (tablist) -- full-width dark hairline above the tabs */
+.tabs-activity .tabs-activity-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 0;
+  padding: 12px 0 0;
+  border-top: 2px solid var(--dark-color);
+  overflow-x: auto;
+}
+
+/* reset the global button styling for tabs */
+.tabs-activity .tabs-activity-list button.tabs-activity-tab {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 8px 24px 8px 0;
+  border: 0;
+  border-bottom: 4px solid transparent;
+  border-radius: 0;
+  background-color: transparent;
+  color: rgb(200 194 184);
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-l);
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: -0.2px;
+  text-align: left;
+  text-transform: none;
+  text-overflow: unset;
+  white-space: nowrap;
+  overflow: unset;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.tabs-activity .tabs-activity-list button.tabs-activity-tab p {
+  margin: 0;
+}
+
+.tabs-activity .tabs-activity-list button.tabs-activity-tab:hover {
+  background-color: transparent;
+  color: var(--dark-color);
+}
+
+.tabs-activity .tabs-activity-list button.tabs-activity-tab[aria-selected='true'] {
+  color: var(--dark-color);
+  border-bottom-color: var(--accent-color);
+  cursor: default;
+}
+
+@media (width >= 900px) {
+  .tabs-activity .tabs-activity-list button.tabs-activity-tab {
+    padding-right: 32px;
+  }
+}
+
+/* Tab panels */
+.tabs-activity .tabs-activity-panel {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.tabs-activity .tabs-activity-panel[aria-hidden='true'] {
+  display: none;
+}
+
+/* Card grid inside the active panel */
+.tabs-activity .tabs-activity-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin: 48px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (width >= 600px) {
+  .tabs-activity .tabs-activity-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .tabs-activity .tabs-activity-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Article card */
+.tabs-activity .tabs-activity-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgb(221 216 207);
+  border-radius: 20px;
+  background-color: var(--background-color);
+  color: var(--dark-color);
+}
+
+.tabs-activity .tabs-activity-card a:any-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Card image -- fixed 16/10 aspect ratio */
+.tabs-activity .tabs-activity-card-image {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.tabs-activity .tabs-activity-card-image picture,
+.tabs-activity .tabs-activity-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Card body */
+.tabs-activity .tabs-activity-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px 16px;
+}
+
+/* Tag / eyebrow pill */
+.tabs-activity .tabs-activity-tag {
+  align-self: flex-start;
+  margin: 0;
+  padding: 5px 8px 3px;
+  border-radius: 9999px;
+  background-color: var(--accent-color);
+  color: #fff;
+  font-family: var(--heading-font-family);
+  font-size: 10.4px;
+  font-weight: 600;
+  letter-spacing: 0.52px;
+  line-height: 1;
+  text-transform: none;
+}
+
+/* Card title */
+.tabs-activity .tabs-activity-card-body h3 {
+  margin: 0;
+  font-family: var(--heading-font-family);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 15.4px;
+  letter-spacing: 0.7px;
+  color: var(--dark-color);
+}
+
+/* Card description */
+.tabs-activity .tabs-activity-desc {
+  margin: 0;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-xs);
+  font-weight: 400;
+  line-height: 18.2px;
+  color: rgb(122 138 128);
+}

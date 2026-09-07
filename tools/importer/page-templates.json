@@ -1,0 +1,90 @@
+{
+  "templates": [
+    {
+      "name": "home",
+      "urls": [
+        "https://wknd-adventures.com"
+      ],
+      "representativeUrl": "https://wknd-adventures.com",
+      "description": "",
+      "blocks": [
+        {
+          "name": "hero",
+          "instances": [
+            ".hero-section.hero-section--full"
+          ]
+        },
+        {
+          "name": "section-featured",
+          "instances": [
+            "#main-content > section.section.secondary-section:nth-of-type(2)"
+          ],
+          "section": "secondary"
+        },
+        {
+          "name": "teaser",
+          "instances": [
+            ".featured-article"
+          ]
+        },
+        {
+          "name": "tabs-activity",
+          "instances": [
+            ".tab-container.tab-container--wide"
+          ]
+        },
+        {
+          "name": "section-ticker",
+          "instances": [
+            "#main-content > div.ticker-strip"
+          ],
+          "section": "ticker"
+        },
+        {
+          "name": "section-start-here",
+          "instances": [
+            "#main-content > section.section.inverse-section:nth-of-type(4)"
+          ],
+          "section": "inverse"
+        },
+        {
+          "name": "accordion-faq",
+          "instances": [
+            ".faq-list"
+          ]
+        },
+        {
+          "name": "section-how-we-work",
+          "instances": [
+            "#main-content > section.section.secondary-section:nth-of-type(6)"
+          ],
+          "section": "secondary"
+        },
+        {
+          "name": "section-in-the-field",
+          "instances": [
+            "#main-content > section.section.inverse-section:nth-of-type(7)"
+          ],
+          "section": "inverse"
+        },
+        {
+          "name": "columns",
+          "instances": [
+            ".grid-layout.desktop-3-column.grid-images"
+          ]
+        },
+        {
+          "name": "section-closing-cta",
+          "instances": [
+            "#main-content > section.section.accent-section"
+          ],
+          "section": "accent"
+        }
+      ],
+      "urlPattern": "/"
+    }
+  ],
+  "metadata": {
+    "projectType": "xwalk"
+  }
+}

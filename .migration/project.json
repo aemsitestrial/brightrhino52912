@@ -1,4 +1,5 @@
 {
+  "type": "xwalk",
   "sites": {
     "brightrhino52912": {
       "previewOrg": "aemsitestrial",
@@ -7,7 +8,8 @@
       "aemSitePath": "/content/2026/36/brightrhino52912",
       "aemAssetsFolderPath": "/content/dam/2026/36/brightrhino52912",
       "aemSiteName": "brightrhino52912",
-      "aemSiteTitle": "brightrhino52912"
+      "aemSiteTitle": "brightrhino52912",
+      "libraryUrl": "https://main--sta-xwalk-boilerplate--aemysites.aem.page/tools/sidekick/library.json"
     }
   }
 }
